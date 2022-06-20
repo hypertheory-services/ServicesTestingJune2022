@@ -9,7 +9,7 @@ public class MakingDeposits
     [Fact]
     public void DepositsIncreaseBalance()
     {
-        var account = new BankAccount();
+        var account = new BankAccount(new Mock<ICalculateBonuses>().Object);
         var openingBalance = account.GetBalance();
         var amountToDeposit = 100M;
 

@@ -3,6 +3,13 @@
 public class BankAccount
 {
     private decimal _currentBalance = 5000M;
+    private readonly ICalculateBonuses _bonusCalculator;
+
+    public BankAccount(ICalculateBonuses bonusCalculator)
+    {
+        _bonusCalculator = bonusCalculator;
+    }
+
     public decimal GetBalance()
     {
         return _currentBalance;
@@ -22,6 +29,8 @@ public class BankAccount
 
     public void Deposit(decimal amountToDeposit)
     {
-        _currentBalance += amountToDeposit;
+        // WTCYWYH
+        decimal bonus = _bonusCalculator.GetBonusForDeposit(this, amountToDeposit);
+        _currentBalance += amountToDeposit + bonus;
     }
 }

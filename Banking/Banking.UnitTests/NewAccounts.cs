@@ -11,10 +11,18 @@ public class NewAccounts
     public void NewAccountsHaveCorrectOpeningBalance()
     {
         // Given
-        var account = new BankAccount();
+        var account = new BankAccount(new Mock<ICalculateBonuses>().Object);
         // When
         decimal balance = account.GetBalance();
         // Then
         Assert.Equal(5000M, balance);
     }
 }
+
+//public class DummyBonusCalculator : ICalculateBonuses
+//{
+//    public decimal GetBonusForDeposit(BankAccount bankAccount, decimal amountToDeposit)
+//    {
+//        return default;
+//    }
+//}
