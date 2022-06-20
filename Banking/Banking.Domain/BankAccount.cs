@@ -6,4 +6,9 @@ public class BankAccount
     {
         return 5000; // "Sliming"
     }
+
+    public void Withdraw(decimal amountToWithdraw)
+    {
+       
+    }
 }
