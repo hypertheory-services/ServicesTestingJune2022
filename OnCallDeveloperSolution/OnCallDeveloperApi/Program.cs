@@ -16,9 +16,22 @@ if (app.Environment.IsDevelopment())
 
 app.MapGet("/", () =>
 {
-    
+    var response = new OnCallDeveloperResponse
+    {
+        Name = "Sue Jones",
+        Email = "sue@aol.com",
+        Phone = "555-1212"
+    };
+    return response;
 });
 
 app.Run();
 
 public partial class Program { }
+
+public record OnCallDeveloperResponse
+{
+    public string Name { get; set; } = string.Empty;
+    public string Email { get; set; } = string.Empty;
+    public string Phone { get; set; } = string.Empty;
+}

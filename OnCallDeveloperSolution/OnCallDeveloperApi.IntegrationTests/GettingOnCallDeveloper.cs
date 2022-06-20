@@ -23,5 +23,23 @@ public class GettingOnCallDeveloper : IClassFixture<BaseFixture>
         });
 
 
+        var returnedDeveloper = result.ReadAsJson<DeveloperResponse>();
+
+        var expectedResponse = new DeveloperResponse
+        {
+            name = "Sue Jones",
+            email = "sue@aol.com",
+            phone = "555-1212"
+        };
+        Assert.Equal(expectedResponse, returnedDeveloper);
     }
 }
+
+
+public record DeveloperResponse
+{
+    public string name { get; set; }
+    public string email { get; set; }
+    public string phone { get; set; }
+}
+
