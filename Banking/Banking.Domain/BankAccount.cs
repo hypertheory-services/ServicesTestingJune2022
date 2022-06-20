@@ -19,4 +19,9 @@ public class BankAccount
             throw new OverdraftException();
         }
     }
+
+    public void Deposit(decimal amountToDeposit)
+    {
+        _currentBalance += amountToDeposit;
+    }
 }
