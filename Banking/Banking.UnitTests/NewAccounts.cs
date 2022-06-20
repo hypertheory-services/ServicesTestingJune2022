@@ -11,7 +11,7 @@ public class NewAccounts
     public void NewAccountsHaveCorrectOpeningBalance()
     {
         // Given
-        var account = new BankAccount(new Mock<ICalculateBonuses>().Object);
+        var account = new BankAccount(new Mock<ICalculateBonuses>().Object, new Mock<INotifyTheFed>().Object);
         // When
         decimal balance = account.GetBalance();
         // Then

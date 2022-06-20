@@ -4,10 +4,12 @@ public class BankAccount
 {
     private decimal _currentBalance = 5000M;
     private readonly ICalculateBonuses _bonusCalculator;
+    private readonly INotifyTheFed _fedNotifier;
 
-    public BankAccount(ICalculateBonuses bonusCalculator)
+    public BankAccount(ICalculateBonuses bonusCalculator, INotifyTheFed fedNotifier)
     {
         _bonusCalculator = bonusCalculator;
+        _fedNotifier = fedNotifier;
     }
 
     public decimal GetBalance()
@@ -20,7 +22,11 @@ public class BankAccount
         if (amountToWithdraw <= _currentBalance)
         {
             _currentBalance = _currentBalance - amountToWithdraw;
-         //   _currentBalance -= amountToWithdraw;
+            if (amountToWithdraw >= 100M)
+            {
+                _fedNotifier.AccountWithdraw(this, amountToWithdraw);
+            }
+           
         } else
         {
             throw new OverdraftException();

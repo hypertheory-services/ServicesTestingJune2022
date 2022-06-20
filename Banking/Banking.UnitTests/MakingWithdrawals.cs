@@ -12,7 +12,7 @@ public class MakingWithdrawals
 
     public MakingWithdrawals()
     {
-        _account = new BankAccount(new Mock<ICalculateBonuses>().Object);
+        _account = new BankAccount(new Mock<ICalculateBonuses>().Object, new Mock<INotifyTheFed>().Object);
         _openingBalance = _account.GetBalance();
     }
 
