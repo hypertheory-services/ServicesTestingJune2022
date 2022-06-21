@@ -23,12 +23,23 @@ public class StandardBusinessClock : IProvideTheBusinessClock
 
     private static bool AfterStart(DateTime now)
     {
-        return now.Hour >= 8 && now.Minute >= 30;
+        if (now.Hour >= 9)
+        {
+            return true;
+        }
+
+        return now.Hour == 8 && now.Minute >= 30;
+
     }
 
     private static bool BeforeClose(DateTime now)
     {
-        return now.Hour >= 17 && now.Minute < 1;
+        if (now.Hour == 17)
+        {
+            return now.Minute < 1;
+        }
+        return now.Hour < 17;
+        
     }
     private static bool IsTheWeekend(DateTime now)
     {
