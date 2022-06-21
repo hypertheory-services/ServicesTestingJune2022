@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32602.215
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnCallDeveloperApi", "OnCallDeveloperApi\OnCallDeveloperApi.csproj", "{872F80B2-D6E6-4569-90B6-45421ACA384B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnCallDeveloperApi", "OnCallDeveloperApi\OnCallDeveloperApi.csproj", "{872F80B2-D6E6-4569-90B6-45421ACA384B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnCallDeveloperApi.IntegrationTests", "OnCallDeveloperApi.IntegrationTests\OnCallDeveloperApi.IntegrationTests.csproj", "{072039DB-0BA7-4EB9-A862-635F0D18D05C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnCallDeveloperApi.IntegrationTests", "OnCallDeveloperApi.IntegrationTests\OnCallDeveloperApi.IntegrationTests.csproj", "{072039DB-0BA7-4EB9-A862-635F0D18D05C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnCallDeveloperApi.UnitTests", "OnCallDeveloperApi.UnitTests\OnCallDeveloperApi.UnitTests.csproj", "{5DE5C169-C00F-4E9A-AF83-C276DAD605F2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{072039DB-0BA7-4EB9-A862-635F0D18D05C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{072039DB-0BA7-4EB9-A862-635F0D18D05C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{072039DB-0BA7-4EB9-A862-635F0D18D05C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5DE5C169-C00F-4E9A-AF83-C276DAD605F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5DE5C169-C00F-4E9A-AF83-C276DAD605F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5DE5C169-C00F-4E9A-AF83-C276DAD605F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5DE5C169-C00F-4E9A-AF83-C276DAD605F2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
