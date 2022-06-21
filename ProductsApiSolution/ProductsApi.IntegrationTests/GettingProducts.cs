@@ -26,12 +26,29 @@ public class GettingProducts : IClassFixture<GetProductsFixture>
             api.StatusCodeShouldBeOk();
         });
 
+        var responseData = response.ReadAsJson<CollectionResponse<ProductResponseItem>>();
+
+        Assert.Equal(2, responseData!.Data.Count());
+
+        Assert.Equal("Beer", responseData.Data.First().description);
     }
 
-
+    
+    
 
 }
 
+public record ProductResponseItem
+{
+    public string id { get; set; } = string.Empty;
+    public string description { get; set; } = string.Empty;
+    public decimal price { get; set; }
+}
+
+public record CollectionResponse<T>
+{
+    public List<T> Data { get; set; } = new();
+}
 
 public class GetProductsFixture : FixtureBase
 {
@@ -48,3 +65,4 @@ public class GetProductsFixture : FixtureBase
         services.AddSingleton<IProductAdapter>(_ => stubbedProductsCatalog.Object);
     }
 }
+
