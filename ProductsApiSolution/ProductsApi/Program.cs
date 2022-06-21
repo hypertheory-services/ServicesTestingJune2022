@@ -1,3 +1,4 @@
+using ProductsApi.Adapters;
 using ProductsApi.Domain;
 
 namespace ProductsApi;
@@ -15,6 +16,14 @@ public class Program
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
         builder.Services.AddScoped<ProductCatalog>();
+        builder.Services.AddScoped<IProductAdapter, SelfDestructProductAdapter>();
+        
+        builder.Services.AddHttpClient<IOnCallDeveloperApiAdapter ,OnCallDeveloperApiAdapter>(httpClient =>
+        {
+            httpClient.BaseAddress = new Uri(builder.Configuration.GetValue<string>("developerUrl"));
+        });
+
+
         var app = builder.Build();
 
         // Configure the HTTP request pipeline.
