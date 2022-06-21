@@ -1,12 +1,12 @@
 ﻿
 namespace OnCallDeveloperApi.IntegrationTests;
 
-public class GettingOnCallDeveloper : IClassFixture<BaseFixture>
+public class GettingOnCallDeveloperDuringBusinessHours : IClassFixture<BaseFixture>
 {
 
     private readonly IAlbaHost _host;
 
-    public GettingOnCallDeveloper(BaseFixture fixture)
+    public GettingOnCallDeveloperDuringBusinessHours(BaseFixture fixture)
     {
         _host = fixture.AlbaHost;
     }
@@ -33,13 +33,5 @@ public class GettingOnCallDeveloper : IClassFixture<BaseFixture>
         };
         Assert.Equal(expectedResponse, returnedDeveloper);
     }
-}
-
-
-public record DeveloperResponse
-{
-    public string name { get; set; }
-    public string email { get; set; }
-    public string phone { get; set; }
 }
 

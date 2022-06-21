@@ -1,9 +1,15 @@
+using OnCallDeveloperApi.Adapters;
+using OnCallDeveloperApi.Domain;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddSingleton<ISystemTime, SystemTime>();
+builder.Services.AddScoped<DeveloperLookup>();
 
 var app = builder.Build();
 
@@ -14,15 +20,14 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.MapGet("/", () =>
+app.MapGet("/", (DeveloperLookup developerLookup) =>
 {
-    var response = new OnCallDeveloperResponse
-    {
-        Name = "Sue Jones",
-        Email = "sue@aol.com",
-        Phone = "555-1212"
-    };
-    return response;
+
+
+    OnCallDeveloperResponse response = developerLookup.GetOnCallDeveloper();
+        return response;
+   
+ 
 });
 
 app.Run();
