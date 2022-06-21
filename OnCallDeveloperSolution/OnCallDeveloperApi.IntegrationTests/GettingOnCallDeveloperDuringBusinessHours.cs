@@ -1,12 +1,16 @@
 ﻿
+using Microsoft.Extensions.DependencyInjection;
+using Moq;
+using OnCallDeveloperApi.Adapters;
+
 namespace OnCallDeveloperApi.IntegrationTests;
 
-public class GettingOnCallDeveloperDuringBusinessHours : IClassFixture<BaseFixture>
+public class GettingOnCallDeveloperDuringBusinessHours : IClassFixture<DuringBusinessHoursFixture>
 {
 
     private readonly IAlbaHost _host;
 
-    public GettingOnCallDeveloperDuringBusinessHours(BaseFixture fixture)
+    public GettingOnCallDeveloperDuringBusinessHours(DuringBusinessHoursFixture fixture)
     {
         _host = fixture.AlbaHost;
     }
@@ -35,3 +39,13 @@ public class GettingOnCallDeveloperDuringBusinessHours : IClassFixture<BaseFixtu
     }
 }
 
+public class DuringBusinessHoursFixture : BaseFixture
+{
+    protected override void ConfigureServices(IServiceCollection services)
+    {
+        var stubbedSystemTime = new Mock<ISystemTime>();
+        stubbedSystemTime.Setup(c => c.GetCurrent()).Returns(new DateTime(2022, 6, 21, 14, 29, 00));
+
+        services.AddSingleton<ISystemTime>(_ => stubbedSystemTime.Object);
+    }
+}
