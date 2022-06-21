@@ -17,7 +17,13 @@ public class BaseFixture : IAsyncLifetime
             builder.ConfigureServices((context, services) =>
             {
                 services.AddMvcCore();
+                ConfigureServices(services);
             });
         });
+    }
+
+    protected virtual void ConfigureServices(IServiceCollection services)
+    {
+        // Design Pattern! Template method.
     }
 }

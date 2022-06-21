@@ -10,7 +10,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddSingleton<ISystemTime, SystemTime>();
 builder.Services.AddScoped<DeveloperLookup>();
-
+builder.Services.AddTransient<IProvideTheBusinessClock, StandardBusinessClock>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
