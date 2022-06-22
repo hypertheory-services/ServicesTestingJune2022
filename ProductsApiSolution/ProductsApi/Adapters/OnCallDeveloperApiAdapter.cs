@@ -7,6 +7,7 @@ public class OnCallDeveloperApiAdapter : IOnCallDeveloperApiAdapter
     public OnCallDeveloperApiAdapter(HttpClient client)
     {
         _client = client;
+
     }
 
 
