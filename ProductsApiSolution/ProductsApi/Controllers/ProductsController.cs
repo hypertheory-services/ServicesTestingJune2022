@@ -5,6 +5,7 @@ using ProductsApi.Models;
 
 namespace ProductsApi.Controllers;
 
+[ApiController]
 public class ProductsController : ControllerBase
 {
 
@@ -14,6 +15,14 @@ public class ProductsController : ControllerBase
     {
         _productCatalog = productCatalog;
         _onCallAdapter = onCallAdapter;
+    }
+
+
+    [HttpPost("products")]
+    public async Task<ActionResult> AddAProduct([FromBody] CreateProductRequest request)
+    {
+
+        return Ok(request); // 201, Location Header, A copy of the entity created.
     }
 
     [HttpGet("products")]

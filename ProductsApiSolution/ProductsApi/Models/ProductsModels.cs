@@ -1,4 +1,6 @@
-﻿namespace ProductsApi.Models;
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace ProductsApi.Models;
 
 public class ProductSummaryItemResponse
 {
@@ -13,4 +15,12 @@ public class CollectionResult<T>
 {
     public List<T> Data { get; set; } = new();
 
+}
+
+public class CreateProductRequest
+{
+    [Required]
+    public string Description { get; set; } = string.Empty;
+    [Required]
+    public decimal? Price { get; set; }
 }
