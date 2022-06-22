@@ -11,6 +11,7 @@ public class UserAccountGenerator
     }
 
     // This is not good for NEW code
+    [Obsolete("Don't User This")]
     public UserAccountGenerator()
     {
         _userAccountSeedGenerator = new RandomUserAccountSeeder();
