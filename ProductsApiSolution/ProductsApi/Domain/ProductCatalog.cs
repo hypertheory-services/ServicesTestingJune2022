@@ -18,7 +18,7 @@ public class ProductCatalog
 
         var data = products.Select(p => new ProductSummaryItemResponse
         {
-            Id = p.Id,
+            Id = p.Id.ToString(),
             Description = p.Description,
             Price = p.Price
         }).ToList();
@@ -36,7 +36,7 @@ public class ProductCatalog
 
         return new ProductSummaryItemResponse
         {
-            Id = product.Id,
+            Id = product.Id.ToString(),
             Description = product.Description,
             Price = product.Price
         };

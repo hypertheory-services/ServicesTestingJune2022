@@ -56,8 +56,8 @@ public class GetProductsFixture : FixtureBase
     {
         var productsToReturn = new List<Product>
         {
-            new Product { Id = "1", Description="Beer", Price=5.99M},
-            new Product { Id = "2", Description="Good Beer", Price =12.999M}
+            new Product { Id = 1, Description="Beer", Price=5.99M},
+            new Product { Id = 2, Description="Good Beer", Price =12.999M}
         }.AsQueryable();
         var stubbedProductsCatalog = new Mock<IProductAdapter>();
         stubbedProductsCatalog.Setup(p => p.GetProductsAsync()).ReturnsAsync(productsToReturn);

@@ -1,17 +1,35 @@
-﻿using ProductsApi.Adapters;
+﻿using Microsoft.EntityFrameworkCore;
+using ProductsApi.Adapters;
 using ProductsApi.Models;
 
 namespace ProductsApi.Domain;
 
-public class EntityFrameworkProductCatalog : IProductAdapter
+public class EntityFrameworkProductCatalog : DbContext, IProductAdapter
 {
-    public Task<Product> AddProductAsync(CreateProductRequest request)
+
+    public EntityFrameworkProductCatalog(DbContextOptions<EntityFrameworkProductCatalog> options) : base(options)
     {
-        throw new NotImplementedException();
+
+    }
+    public virtual DbSet<Product>? Products { get; set; } = null;
+
+    public async Task<Product> AddProductAsync(CreateProductRequest request)
+    {
+        var product = new Product
+        {
+            Description = request.Description,
+            Price = request.Price!.Value
+        };
+
+        Products!.Add(product);
+        await SaveChangesAsync();
+        return product;
     }
 
-    public Task<IQueryable<Product>> GetProductsAsync()
+    public async Task<IQueryable<Product>> GetProductsAsync()
     {
-        throw new NotImplementedException();
+        var products = await Products!.ToListAsync();
+
+        return products.AsQueryable();
     }
 }

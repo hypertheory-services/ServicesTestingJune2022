@@ -45,7 +45,7 @@ public class AddingAProduct : IClassFixture<AddingAProductFixture>
         {
             var gratiutiouslyBadRequest = new CreateProductRequest { Description = null, Price = null };
             api.Post.Json(gratiutiouslyBadRequest).ToUrl("/products");
-            api.StatusCodeShouldBe(400); // lie!
+            api.StatusCodeShouldBe(400); // TRUTH!!
         });
     }
 }
@@ -56,7 +56,7 @@ public class AddingAProductFixture: FixtureBase {
     public Mock<IProductAdapter> MockedAdapter;
     public CreateProductRequest ModelToSend = new CreateProductRequest { Description="beer", Price=12.99M};
     public Product ExpectedResponse = new Product { 
-        Id = "42", 
+        Id = 42, 
         Description = "beer", 
         Price = 12.99M };
     public override void ConfigureServices(IServiceCollection services)
