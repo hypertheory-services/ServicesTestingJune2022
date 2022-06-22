@@ -1,7 +1,6 @@
-﻿namespace ProductsApi.Adapters
+﻿namespace ProductsApi.Adapters;
+
+public interface IOnCallDeveloperApiAdapter
 {
-    public interface IOnCallDeveloperApiAdapter
-    {
-        Task<DeveloperResponse?> GetOnCallDeveloperAsync();
-    }
+    Task<DeveloperResponse> GetOnCallDeveloperAsync();
 }

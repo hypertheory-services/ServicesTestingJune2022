@@ -22,7 +22,7 @@ public class OnCallDeveloperApiAdapter : IOnCallDeveloperApiAdapter
 
 }
 
-public class DeveloperResponse
+public record DeveloperResponse
 {
     public string name { get; set; } = string.Empty;
     public string email { get; set; } = string.Empty;
