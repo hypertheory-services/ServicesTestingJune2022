@@ -21,8 +21,8 @@ public class ProductsController : ControllerBase
     [HttpPost("products")]
     public async Task<ActionResult> AddAProduct([FromBody] CreateProductRequest request)
     {
-
-        return Ok(request); // 201, Location Header, A copy of the entity created.
+        ProductSummaryItemResponse response = await _productCatalog.AddItemAsync(request);
+        return StatusCode(201, response); // 201, Location Header, A copy of the entity created.
     }
 
     [HttpGet("products")]

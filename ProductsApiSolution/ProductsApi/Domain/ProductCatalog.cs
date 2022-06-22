@@ -29,4 +29,16 @@ public class ProductCatalog
         };
 
     }
+
+    public async Task<ProductSummaryItemResponse> AddItemAsync(CreateProductRequest request)
+    {
+        Product product = await _adapter.AddProductAsync(request);
+
+        return new ProductSummaryItemResponse
+        {
+            Id = product.Id,
+            Description = product.Description,
+            Price = product.Price
+        };
+    }
 }
